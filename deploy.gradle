@@ -1,0 +1,90 @@
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+def publishVersion = System.getenv("TRAVIS_BUILD_NUMBER") ?: '0'
+
+def packageDescription = 'Spring Boot Starter for Mental System auto-configurations'
+def packageName = 'com.teammental.mestarter'
+def repoUrl = 'https://github.com/mental-party/mestarter'
+
+bintray {
+    user = project.hasProperty('bintray-user') ? project.property('bintray-user') : System.getenv('bintray-user')
+    key = project.hasProperty('bintray-key') ? project.property('bintray-key') : System.getenv('bintray-key')
+
+
+    publications = ['BintrayPublication']
+    pkg {
+        repo = 'meparty'
+        name = packageName
+        desc = packageDescription
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/mental-party/mestarter.git'
+        userOrg = 'mental-soft'
+        labels = ['mapper', 'java', 'generic']
+        publicDownloadNumbers = true
+        version {
+            name = publishVersion
+            desc = packageDescription
+        }
+    }
+}
+
+
+
+// Create the pom configuration:
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "er-han"
+            name "Erhan KARAKAYA"
+            email "erhan277@gmail.com"
+        }
+    }
+
+    scm {
+        url repoUrl
+    }
+}
+
+// Create the publication with the pom configuration:
+publishing {
+    publications {
+        BintrayPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+            groupId 'com.teammental'
+            artifactId 'mestarter'
+            version publishVersion
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', packageDescription)
+                root.appendNode('name', 'Mental Starter')
+                root.appendNode('url', repoUrl)
+                root.children().last() + pomConfig
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
