@@ -1,11 +1,13 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 
-def publishVersion = System.getenv("TRAVIS_BUILD_NUMBER") ?: '0'
 
 def packageDescription = 'Spring Boot Starter for Mental System auto-configurations'
 def packageName = 'com.teammental.mestarter'
 def repoUrl = 'https://github.com/mental-party/mestarter'
+def releaseVersion = '0'
+def publishVersion = releaseVersion + '.' + (System.getenv("TRAVIS_BUILD_NUMBER") ?: '0')
+
 
 bintray {
     user = project.hasProperty('bintray-user') ? project.property('bintray-user') : System.getenv('bintray-user')
@@ -28,8 +30,6 @@ bintray {
         }
     }
 }
-
-
 
 // Create the pom configuration:
 def pomConfig = {
