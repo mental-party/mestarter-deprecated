@@ -6,6 +6,8 @@ jar {
 
 dependencies {
     compile 'com.teammental:meconfig:0.1.+'
+    compile 'com.teammental:memapper:2.0.+'
+    compile 'com.teammental:mebuilder:2.0.+'
 }
 
 
