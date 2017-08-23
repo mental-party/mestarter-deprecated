@@ -5,8 +5,7 @@ jar {
 }
 
 dependencies {
-    compile 'com.teammental:mevalidator:0.2'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '1.5.6.RELEASE'
+    compile 'com.teammental:meconfig:0.2'
 }
 
 
