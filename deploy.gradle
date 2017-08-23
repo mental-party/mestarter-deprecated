@@ -5,7 +5,7 @@ apply plugin: 'maven-publish'
 def packageDescription = 'Spring Boot Starter for Mental System auto-configurations'
 def packageName = 'com.teammental.mestarter'
 def repoUrl = 'https://github.com/mental-party/mestarter'
-def releaseVersion = '0'
+def releaseVersion = '0.1'
 def publishVersion = releaseVersion + '.' + (System.getenv("TRAVIS_BUILD_NUMBER") ?: '0')
 
 
