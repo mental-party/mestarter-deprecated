@@ -5,7 +5,7 @@ jar {
 }
 
 dependencies {
-    compile 'com.teammental:meconfig:0.2'
+    compile 'com.teammental:meconfig:0.3'
 }
 
 
