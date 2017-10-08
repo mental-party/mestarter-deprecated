@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mental-party/mestarter.svg?branch=master)](https://travis-ci.org/mental-party/mestarter)
+[![Build Status](http://ci.teammental.com/job/mental-party/mestarter/master/badge/icon)](http://ci.teammental.com/job/mental-party/mestarter/master)
 
 # mestarter
 Spring Boot Starter for Mental System auto-configurations
