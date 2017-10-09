@@ -2,3 +2,10 @@
 
 # mestarter
 Spring Boot Starter for Mental System auto-configurations
+
+## Dependencies
+
+- memapper:3.0
+- mebuilder:2.4
+- mehelper:1.0
+- meconfig:1.0
