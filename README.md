@@ -9,3 +9,4 @@ Spring Boot Starter for Mental System auto-configurations
 - mebuilder:2.4
 - mehelper:1.0
 - meconfig:1.0
+
