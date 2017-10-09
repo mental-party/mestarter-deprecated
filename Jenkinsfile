@@ -3,8 +3,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Building'
                 sh 'chmod +x gradlew'
                 sh './gradlew build'
+            }
+        }
+        input 'Do you approve deployment?
+        stage('Deploy - Prod') {
+            steps {
+                echo 'Deployinggg'
             }
         }
     }
