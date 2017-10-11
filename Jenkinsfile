@@ -8,7 +8,6 @@ pipeline {
                 sh './gradlew build'
             }
         }
-        input 'Do you approve deployment?'
         stage('Deploy - Prod') {
             steps {
                 echo 'Deployinggg'
